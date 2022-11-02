@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  - let motels = [{motelRatings:"4.2 Star", motelCost: 120, motelFacility: "Complementary break fast"},{motelRatings:"3.5 Star", motelCost: 100, motelFacility: "Swimming pool"},{motelRatings:"4.6 Star", motelCost: 180, motelFacility: "Gym plus Swimming Pool"}]
+  div(class="container-fluid")
+  div(class="row")
+    each motel,index in motels
+      div(class="col-sm-2" onclick=`buy(${index})`)  #{motel.motelRatings} -  #{motel.motelCost} - #{motel.motelFacility} 
+  script.
+    function buy(index)
+    {
+      alert(`You purchased Item ${index+1}`)
+    } 
