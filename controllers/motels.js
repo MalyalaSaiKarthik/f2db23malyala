@@ -31,3 +31,16 @@ exports.motels_delete = function (req, res) {
 exports.motels_update_put = function (req, res) {
     res.send('NOT IMPLEMENTED: Motels update PUT' + req.params.id);
 };
+
+// VIEWS
+// Handle a show all view
+exports.motels_view_all_Page = async function (req, res) {
+    try {
+        theMotels = await Motels.find();
+        res.render('motels', { title: 'Motels Search Results', results: theMotels });
+    }
+    catch (err) {
+        res.status(500);
+        res.send(`{"error": ${err}}`);
+    }
+};
