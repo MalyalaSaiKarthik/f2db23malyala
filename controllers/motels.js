@@ -18,8 +18,24 @@ exports.motels_detail = function (req, res) {
 };
 
 // Handle Motels create on POST.
-exports.motels_create_post = function (req, res) {
-    res.send('NOT IMPLEMENTED: Motels create POST');
+exports.motels_create_post = async function (req, res) {
+    console.log(req.body)
+    let document = new Motels();
+    // We are looking for a body, since POST does not have query parameters.
+    // Even though bodies can be in many different formats, we will be picky
+    // and require that it be a json object
+    // {"motelRatings":"3.5 Star", "motelCost":100, "motelFacility":"Swimming pool"}
+    document.motelRatings = req.body.motelRatings;
+    document.motelCost = req.body.motelCost;
+    document.motelFacility = req.body.motelFacility;
+    try {
+        let result = await document.save();
+        res.send(result);
+    }
+    catch (err) {
+        res.status(500);
+        res.send(`{"error": ${err}}`);
+    }
 };
 
 // Handle Motels delete form on DELETE.
