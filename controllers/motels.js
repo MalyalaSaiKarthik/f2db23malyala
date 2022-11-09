@@ -51,8 +51,21 @@ exports.motels_delete = function (req, res) {
 };
 
 // Handle Motels update form on PUT.
-exports.motels_update_put = function (req, res) {
-    res.send('NOT IMPLEMENTED: Motels update PUT' + req.params.id);
+exports.motels_update_put = async function (req, res) {
+    console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`)
+    try {
+        let toUpdate = await Motels.findById(req.params.id)
+        // Do updates of properties
+        if (req.body.motelRatings) toUpdate.motelRatings = req.body.motelRatings;
+        if (req.body.motelCost) toUpdate.motelCost = req.body.motelCost;
+        if (req.body.motelFacility) toUpdate.motelFacility = req.body.motelFacility;
+        let result = await toUpdate.save();
+        console.log("Sucess " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": ${err}: Update for id ${req.params.id} failed`);
+    }
 };
 
 // VIEWS
