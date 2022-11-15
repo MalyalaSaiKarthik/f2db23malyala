@@ -8,5 +8,7 @@ router.get('/', motels_controlers.motels_view_all_Page);
 router.get('/detail', motels_controlers.motels_view_one_Page);
 /* GET create costume page */
 router.get('/create', motels_controlers.motels_create_Page);
+/* GET create update page */
+router.get('/update', motels_controlers.motels_update_Page);
 
 module.exports = router;
