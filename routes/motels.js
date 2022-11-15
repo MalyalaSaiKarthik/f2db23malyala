@@ -6,5 +6,7 @@ var router = express.Router();
 router.get('/', motels_controlers.motels_view_all_Page);
 /* GET detail motel page */
 router.get('/detail', motels_controlers.motels_view_one_Page);
+/* GET create costume page */
+router.get('/create', motels_controlers.motels_create_Page);
 
 module.exports = router;
