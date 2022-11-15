@@ -22,7 +22,6 @@ var motelsRouter = require('./routes/motels');
 var gridbuildRouter = require('./routes/gridbuild');
 var selectorRouter = require('./routes/selector');
 var resourceRouter = require('./routes/resource');
-var moteldetailRouter = require('./routes/moteldetail');
 
 var app = express();
 
@@ -42,7 +41,7 @@ app.use('/motels', motelsRouter);
 app.use('/gridbuild', gridbuildRouter);
 app.use('/selector', selectorRouter);
 app.use('/resource', resourceRouter);
-app.use('/detail', moteldetailRouter);
+app.use('/detail', motelsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

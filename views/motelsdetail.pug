@@ -1,0 +1,21 @@
+extends layout
+block content
+  h1= title
+
+  - let motelId = toShow._id
+  - let motelRatings = toShow.motelRatings
+  - let motelCost = toShow.motelCost
+  - let motelFacility = toShow.motelFacility
+  div
+    div.row
+      div(class='costumeAttr mr-3') Costume ID is:
+      div #{motelId}
+    div.row
+      div(class='costumeAttr mr-3') Costume Type is:
+      div #{motelRatings}
+    div.row
+      div(class='costumeAttr mr-3') Costume Size is:
+      div #{motelCost}
+    div.row
+      div(class='costumeAttr mr-3') Costume Cost is:
+      div #{motelFacility}
