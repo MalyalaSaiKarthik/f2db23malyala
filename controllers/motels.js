@@ -94,7 +94,7 @@ exports.motels_view_one_Page = async function (req, res) {
     console.log("single view for id " + req.query.id)
     try {
         result = await Motels.findById(req.query.id)
-        res.render('motelsdetail', { title: 'Motel Detail', toShow: result });
+        res.render('moteldetail', { title: 'Motel Detail', toShow: result });
     }
     catch (err) {
         res.status(500)
